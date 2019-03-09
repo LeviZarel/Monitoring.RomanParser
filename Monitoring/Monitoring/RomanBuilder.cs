@@ -4,13 +4,14 @@ using System.Text;
 
 namespace Monitoring
 {
-    class RomanBuilder
+    public class RomanBuilder
     {
+        private string OutOfRangeMesagge = "Insert number in range 1 and 3999";
         private Parser myParser = new Parser();
         private string BuildRomanNumber(int number)
         {
-            if (number < 1 || number > 3999)
-                return "";
+            if (number < 0 || number > 3999)
+                throw new ArgumentOutOfRangeException(OutOfRangeMesagge);
             if (number >= 1000)
                 return myParser.GetItem(1000) + BuildRomanNumber(number - 1000);
             if (number >= 900)
@@ -38,7 +39,7 @@ namespace Monitoring
             if (number >= 1)
                 return myParser.GetItem(1) + BuildRomanNumber(number - 1);
             else
-                return "error";
+                return "";
         }
 
         public RomanNumber GetRomanNumber(int number)

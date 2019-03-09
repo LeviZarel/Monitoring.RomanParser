@@ -6,6 +6,7 @@ namespace Monitoring
 {
     public class ConversionTable
     {
+        private string InvalidValueMesagge = "Number not exist in Table";
         private List<RomanNumber> Table;
         public ConversionTable()
         {
@@ -33,7 +34,7 @@ namespace Monitoring
                 if (number == romanNumber.Value)
                     return romanNumber.Symbol;
             }
-            return "";
+            throw new ArgumentException(InvalidValueMesagge);
         }
     }
 }
